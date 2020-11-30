@@ -13,7 +13,10 @@ namespace Shared.DbInit
 
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(databaseString)
+                options.UseSqlServer(databaseString, sql =>
+                        {
+                            sql.MigrationsAssembly(MigrationResolver.ResolveMigrationAssembly());
+                        })
                     .EnableDetailedErrors()
                     .EnableSensitiveDataLogging();
             });
