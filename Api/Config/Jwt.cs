@@ -14,7 +14,7 @@ namespace Api.Config
     {
         public static void JwtConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            var secret = configuration["JwtSecret"];
+            var secret = configuration["Jwt:Secret"];
             var key = Encoding.ASCII.GetBytes(secret);
 
             services.AddAuthentication(x =>

@@ -4,7 +4,7 @@ using Shared.CachingProvider;
 using Shared.ClaimsPrincipal;
 using Shared.DbInit;
 using Shared.DbInit.Repository;
-//using Shared.Notification;
+using Shared.Security;
 
 namespace Shared
 {
@@ -14,6 +14,7 @@ namespace Shared
         {
             services.AddHttpContextAccessor();
             services.AddScoped<IClaimsPrincipal, ClaimsPrincipalProvider>();
+            services.AddScoped<IJwtToken,JwtToken>();
             services.DatabaseInitialization(configuration);
             services.CachingConfiguration(configuration);
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
